@@ -250,356 +250,358 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () {
-          FocusManager.instance.primaryFocus?.unfocus();
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    setPressedBack();
-                    Navigator.pop(context);
-                  });
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 24.0),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.arrow_back,
-                        color: pressedBack ? Colors.blueGrey : Colors.blue,),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5.0),
-                        child: Text(
-                          'Go back',
-                          style: TextStyle(
-                              color: pressedBack ? Colors.blueGrey : Colors.blue),
+      body: SafeArea(
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      setPressedBack();
+                      Navigator.pop(context);
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 24.0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.arrow_back,
+                          color: pressedBack ? Colors.blueGrey : Colors.blue,),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5.0),
+                          child: Text(
+                            'Go back',
+                            style: TextStyle(
+                                color: pressedBack ? Colors.blueGrey : Colors.blue),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 120.0),
-                child: Hero(
-                  tag: 'welcomeText',
-                  child: Material(
-                    child: AnimatedOpacity(
-                      opacity: backVisible ? 1.0 : 0.0,
-                      duration: const Duration(milliseconds: 500),
-                      child: const Text(
-                        'Welcome',
-                        style: TextStyle(color: Colors.blue, fontSize: 40.0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 110.0),
+                  child: Hero(
+                    tag: 'welcomeText',
+                    child: Material(
+                      child: AnimatedOpacity(
+                        opacity: backVisible ? 1.0 : 0.0,
+                        duration: const Duration(milliseconds: 500),
+                        child: const Text(
+                          'Welcome',
+                          style: TextStyle(color: Colors.blue, fontSize: 40.0),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              const Padding(
-                  padding: EdgeInsets.only(top: 50)
-              ),
-              Column(
-                children: [
-                  TextField(
-                    controller: usernameController,
-                    keyboardType: TextInputType.name,
-                    style: TextStyle(
-                        color: correctUsername ? Colors.blue : Colors.red
-                        ),
-                    decoration: InputDecoration(
-                        hintText: 'Email',
-                        hintStyle: TextStyle(
-                            color: correctUsername ? Colors.blueGrey : Colors.red
-                            ),
-                        prefixIcon: Icon(
-                            Icons.email_outlined,
-                            color: correctUsername ? Colors.blue : Colors.red
-                            ),
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.0),
-                            borderSide: BorderSide(
-                                width: 1,
-                                color: correctUsername ? Colors.blue : Colors.red
-                            )
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
-                                width: 2,
-                                color: correctUsername ? Colors.blue : Colors.red
-                            )
-                        )
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12.0),
-                    child: TextField(
-                      controller: confirmUsernameController,
+                const Padding(
+                    padding: EdgeInsets.only(top: 30)
+                ),
+                Column(
+                  children: [
+                    TextField(
+                      controller: usernameController,
                       keyboardType: TextInputType.name,
                       style: TextStyle(
-                          color: correctConfirmUsername ? Colors.blue : Colors.red
+                          color: correctUsername ? Colors.blue : Colors.red
                           ),
                       decoration: InputDecoration(
-                          hintText: 'Confirm email',
+                          hintText: 'Email',
                           hintStyle: TextStyle(
-                              color: correctConfirmUsername ? Colors.blueGrey : Colors.red
+                              color: correctUsername ? Colors.blueGrey : Colors.red
                               ),
                           prefixIcon: Icon(
                               Icons.email_outlined,
-                              color: correctConfirmUsername ? Colors.blue : Colors.red
+                              color: correctUsername ? Colors.blue : Colors.red
                               ),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.0),
                               borderSide: BorderSide(
                                   width: 1,
-                                  color: correctConfirmUsername ? Colors.blue : Colors.red
+                                  color: correctUsername ? Colors.blue : Colors.red
                               )
                           ),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
                               borderSide: BorderSide(
                                   width: 2,
-                                  color: correctConfirmUsername ? Colors.blue : Colors.red
+                                  color: correctUsername ? Colors.blue : Colors.red
                               )
                           )
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child:
+                    Padding(
+                      padding: const EdgeInsets.only(top: 12.0),
+                      child: TextField(
+                        controller: confirmUsernameController,
+                        keyboardType: TextInputType.name,
+                        style: TextStyle(
+                            color: correctConfirmUsername ? Colors.blue : Colors.red
+                            ),
+                        decoration: InputDecoration(
+                            hintText: 'Confirm email',
+                            hintStyle: TextStyle(
+                                color: correctConfirmUsername ? Colors.blueGrey : Colors.red
+                                ),
+                            prefixIcon: Icon(
+                                Icons.email_outlined,
+                                color: correctConfirmUsername ? Colors.blue : Colors.red
+                                ),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                                borderSide: BorderSide(
+                                    width: 1,
+                                    color: correctConfirmUsername ? Colors.blue : Colors.red
+                                )
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                                borderSide: BorderSide(
+                                    width: 2,
+                                    color: correctConfirmUsername ? Colors.blue : Colors.red
+                                )
+                            )
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child:
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              Visibility(
+                                  visible: !correctUsername,
+                                  child: const Icon(Icons.error_outline, color: Colors.red,)
+                              ),
+                              Visibility(
+                                visible: !correctUsername,
+                                child: const Text(
+                                  'Your email is not valid',
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Visibility(
+                                  visible: !correctConfirmUsername,
+                                  child: const Icon(Icons.error_outline, color: Colors.red,)
+                              ),
+                              Visibility(
+                                visible: !correctConfirmUsername,
+                                child: const Text(
+                                  'Check the confirmation email, something is wrong',
+                                  style: TextStyle(color: Colors.red),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                     Column(
                       children: [
-                        Row(
-                          children: [
-                            Visibility(
-                                visible: !correctUsername,
-                                child: const Icon(Icons.error_outline, color: Colors.red,)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 40.0),
+                          child: TextField(
+                            controller: passwordController,
+                            keyboardType: TextInputType.text,
+                            textCapitalization: TextCapitalization.sentences,
+                            obscureText: !passwordToggle,
+                            style: TextStyle(
+                                color: correctPassword ? Colors.blue : Colors.red
                             ),
-                            Visibility(
-                              visible: !correctUsername,
-                              child: const Text(
-                                'Your email is not valid',
-                                style: TextStyle(color: Colors.red),
-                              ),
-                            )
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Visibility(
-                                visible: !correctConfirmUsername,
-                                child: const Icon(Icons.error_outline, color: Colors.red,)
-                            ),
-                            Visibility(
-                              visible: !correctConfirmUsername,
-                              child: const Text(
-                                'Check the confirmation email, something is wrong',
-                                style: TextStyle(color: Colors.red),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 40.0),
-                        child: TextField(
-                          controller: passwordController,
-                          keyboardType: TextInputType.text,
-                          textCapitalization: TextCapitalization.sentences,
-                          obscureText: !passwordToggle,
-                          style: TextStyle(
-                              color: correctPassword ? Colors.blue : Colors.red
-                          ),
-                          decoration: InputDecoration(
-                              hintText: 'Password',
-                              hintStyle: TextStyle(
-                                  color: correctPassword ? Colors.blueGrey : Colors.red
-                                  ),
-                              prefixIcon: Icon(
-                                Icons.lock_outlined,
-                                color: correctPassword ? Colors.blue : Colors.red,
-                              ),
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  passwordToggle ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                            decoration: InputDecoration(
+                                hintText: 'Password',
+                                hintStyle: TextStyle(
+                                    color: correctPassword ? Colors.blueGrey : Colors.red
+                                    ),
+                                prefixIcon: Icon(
+                                  Icons.lock_outlined,
                                   color: correctPassword ? Colors.blue : Colors.red,
                                 ),
-                                onPressed: () {
-                                  setState(() {
-                                    passwordToggle = !passwordToggle;
-                                  });
-                                },
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  borderSide: BorderSide(
-                                      width: 1,
-                                      color: correctPassword ? Colors.blue : Colors.red
-                                  )
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  borderSide: BorderSide(
-                                      width: 2,
-                                      color: correctPassword ? Colors.blue : Colors.red
-                                  )
-                              )
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 12.0),
-                        child: TextField(
-                          controller: confirmPasswordController,
-                          keyboardType: TextInputType.text,
-                          textCapitalization: TextCapitalization.sentences,
-                          obscureText: !passwordConfirmToggle,
-                          style: TextStyle(
-                              color: correctConfirmPassword ? Colors.blue : Colors.red
-                          ),
-                          decoration: InputDecoration(
-                              hintText: 'Confirm password',
-                              hintStyle: TextStyle(
-                                  color: correctConfirmPassword ? Colors.blueGrey : Colors.red
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    passwordToggle ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                                    color: correctPassword ? Colors.blue : Colors.red,
                                   ),
-                              prefixIcon: Icon(
-                                Icons.lock_outlined,
-                                color: correctConfirmPassword ? Colors.blue : Colors.red,
+                                  onPressed: () {
+                                    setState(() {
+                                      passwordToggle = !passwordToggle;
+                                    });
+                                  },
                                 ),
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  passwordConfirmToggle ? Icons.visibility_off_outlined : Icons.visibility_outlined,
-                                  color: correctConfirmPassword ? Colors.blue : Colors.red,
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    borderSide: BorderSide(
+                                        width: 1,
+                                        color: correctPassword ? Colors.blue : Colors.red
+                                    )
                                 ),
-                                onPressed: () {
-                                  setState(() {
-                                    passwordConfirmToggle = !passwordConfirmToggle;
-                                  });
-                                },
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  borderSide: BorderSide(
-                                      width: 1,
-                                      color: correctConfirmPassword ? Colors.blue : Colors.red
-                                  )
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  borderSide: BorderSide(
-                                      width: 2,
-                                      color: correctConfirmPassword ? Colors.blue : Colors.red
-                                  )
-                              )
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child:
-                        Column(
-                          children: [
-                            Row(
-                              children: [
-                                Visibility(
-                                    visible: !correctPassword,
-                                    child: const Icon(Icons.error_outline, color: Colors.red,)
-                                ),
-                                Visibility(
-                                  visible: !correctPassword,
-                                  child: const Text(
-                                    'Your password is not valid, min. 8 characters',
-                                    style: TextStyle(color: Colors.red),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    borderSide: BorderSide(
+                                        width: 2,
+                                        color: correctPassword ? Colors.blue : Colors.red
+                                    )
                                 )
-                              ],
                             ),
-                            Row(
-                              children: [
-                                Visibility(
-                                    visible: !correctConfirmPassword,
-                                    child: const Icon(Icons.error_outline, color: Colors.red,)
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 12.0),
+                          child: TextField(
+                            controller: confirmPasswordController,
+                            keyboardType: TextInputType.text,
+                            textCapitalization: TextCapitalization.sentences,
+                            obscureText: !passwordConfirmToggle,
+                            style: TextStyle(
+                                color: correctConfirmPassword ? Colors.blue : Colors.red
+                            ),
+                            decoration: InputDecoration(
+                                hintText: 'Confirm password',
+                                hintStyle: TextStyle(
+                                    color: correctConfirmPassword ? Colors.blueGrey : Colors.red
+                                    ),
+                                prefixIcon: Icon(
+                                  Icons.lock_outlined,
+                                  color: correctConfirmPassword ? Colors.blue : Colors.red,
+                                  ),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    passwordConfirmToggle ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                                    color: correctConfirmPassword ? Colors.blue : Colors.red,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      passwordConfirmToggle = !passwordConfirmToggle;
+                                    });
+                                  },
                                 ),
-                                Visibility(
-                                  visible: !correctConfirmPassword,
-                                  child: const Expanded(
-                                    child: Text(
-                                      'Check the confirmation password, something is wrong',
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    borderSide: BorderSide(
+                                        width: 1,
+                                        color: correctConfirmPassword ? Colors.blue : Colors.red
+                                    )
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    borderSide: BorderSide(
+                                        width: 2,
+                                        color: correctConfirmPassword ? Colors.blue : Colors.red
+                                    )
+                                )
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child:
+                          Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Visibility(
+                                      visible: !correctPassword,
+                                      child: const Icon(Icons.error_outline, color: Colors.red,)
+                                  ),
+                                  Visibility(
+                                    visible: !correctPassword,
+                                    child: const Text(
+                                      'Your password is not valid, min. 8 characters',
                                       style: TextStyle(color: Colors.red),
                                       overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
                                     ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 40.0),
-                        child: Hero(
-                          tag: 'registerButton',
-                          child: OutlinedButton(
-                              onPressed: () {
-                                setState(() {
-                                  bool emailsOkay = checkEmails();
-                                  bool passwordsOkay = checkPasswords();
-
-                                  if (emailsOkay && passwordsOkay) {
-                                    registered = true;
-                                  }
-                                });
-                              },
-                              style: ButtonStyle(
-                                  padding: MaterialStateProperty.all(
-                                      const EdgeInsets.symmetric(horizontal: 111, vertical: 12)
-                                  ),
-                                  side: MaterialStateProperty.all(
-                                      BorderSide(
-                                          width: 1,
-                                          color: registered ? Colors.green : Colors.blue,
-                                          style: BorderStyle.solid,
-                                      )
-                                  ),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                    registered ? Colors.green : Colors.white
-                                  ),
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(18.0)
-                                      )
                                   )
+                                ],
                               ),
-                              child: Text(
-                                registered ? 'Open app' : 'Register',
-                                style: TextStyle(
-                                    fontSize: 19.0,
-                                    color: registered ? Colors.white : Colors.blue),
+                              Row(
+                                children: [
+                                  Visibility(
+                                      visible: !correctConfirmPassword,
+                                      child: const Icon(Icons.error_outline, color: Colors.red,)
+                                  ),
+                                  Visibility(
+                                    visible: !correctConfirmPassword,
+                                    child: const Expanded(
+                                      child: Text(
+                                        'Check the confirmation password, something is wrong',
+                                        style: TextStyle(color: Colors.red),
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 2,
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
+                            ],
                           ),
                         ),
-                      ),
-                    ],
-                  )
-                ]
-              ),
-            ],
+                        Padding(
+                          padding: const EdgeInsets.only(top: 40.0),
+                          child: Hero(
+                            tag: 'registerButton',
+                            child: OutlinedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    bool emailsOkay = checkEmails();
+                                    bool passwordsOkay = checkPasswords();
+
+                                    if (emailsOkay && passwordsOkay) {
+                                      registered = true;
+                                    }
+                                  });
+                                },
+                                style: ButtonStyle(
+                                    padding: MaterialStateProperty.all(
+                                        const EdgeInsets.symmetric(horizontal: 111, vertical: 12)
+                                    ),
+                                    side: MaterialStateProperty.all(
+                                        BorderSide(
+                                            width: 1,
+                                            color: registered ? Colors.green : Colors.blue,
+                                            style: BorderStyle.solid,
+                                        )
+                                    ),
+                                    backgroundColor: MaterialStateProperty.all<Color>(
+                                      registered ? Colors.green : Colors.white
+                                    ),
+                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(18.0)
+                                        )
+                                    )
+                                ),
+                                child: Text(
+                                  registered ? 'Open app' : 'Register',
+                                  style: TextStyle(
+                                      fontSize: 19.0,
+                                      color: registered ? Colors.white : Colors.blue),
+                                ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ]
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -681,226 +683,228 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () {
-          FocusManager.instance.primaryFocus?.unfocus();
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    setPressedBack();
-                    Navigator.pop(context);
-                  });
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 24.0),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.arrow_back,
-                        color: pressedBack ? Colors.blueGrey : Colors.blue,),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5.0),
-                        child: Text(
-                          'Go back',
-                          style: TextStyle(
-                              color: pressedBack ? Colors.blueGrey : Colors.blue),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 120.0),
-                child: Hero(
-                  tag: 'welcomeText',
-                  child: Material(
-                    child: AnimatedOpacity(
-                      opacity: backVisible ? 1.0 : 0.0,
-                      duration: const Duration(milliseconds: 500),
-                      child: const Text(
-                          'Welcome back',
-                        style: TextStyle(color: Colors.blue, fontSize: 40.0),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              const Padding(
-                  padding: EdgeInsets.only(top: 80)
-              ),
-              Column(
-                children: [
-                  TextField(
-                    controller: usernameController,
-                    keyboardType: TextInputType.name,
-                    textCapitalization: TextCapitalization.sentences,
-                    style: TextStyle(
-                      color: correctUsername ? Colors.blue : Colors.red
-                    ),
-                    decoration: InputDecoration(
-                      hintText: 'Email',
-                      hintStyle: TextStyle(color: correctUsername ? Colors.blueGrey : Colors.red),
-                      prefixIcon: Icon(Icons.email_outlined, color: correctUsername ? Colors.blue : Colors.red),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                        borderSide: BorderSide(
-                          width: 1,
-                          color: correctUsername ? Colors.blue : Colors.red
-                        )
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          width: 2,
-                          color: correctUsername ? Colors.blue : Colors.red
-                        )
-                      )
-                    )
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
+      body: SafeArea(
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      setPressedBack();
+                      Navigator.pop(context);
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 24.0),
                     child: Row(
                       children: [
-                        Visibility(
-                          visible: !correctUsername,
-                          child: const Icon(Icons.error_outline, color: Colors.red,),
+                        Icon(
+                          Icons.arrow_back,
+                          color: pressedBack ? Colors.blueGrey : Colors.blue,),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5.0),
+                          child: Text(
+                            'Go back',
+                            style: TextStyle(
+                                color: pressedBack ? Colors.blueGrey : Colors.blue),
+                          ),
                         ),
-                        Visibility(
-                          visible: !correctUsername,
-                          child: const Text('The email must be valid', style: TextStyle(color: Colors.red),),
-                        )
                       ],
                     ),
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                      child: TextField(
-                        controller: passwordController,
-                        keyboardType: TextInputType.text,
-                        textCapitalization: TextCapitalization.sentences,
-                        obscureText: !passwordToggle,
-                        style: TextStyle(
-                            color: correctPassword ? Colors.blue : Colors.red
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 120.0),
+                  child: Hero(
+                    tag: 'welcomeText',
+                    child: Material(
+                      child: AnimatedOpacity(
+                        opacity: backVisible ? 1.0 : 0.0,
+                        duration: const Duration(milliseconds: 500),
+                        child: const Text(
+                            'Welcome back',
+                          style: TextStyle(color: Colors.blue, fontSize: 40.0),
                         ),
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                          hintStyle: TextStyle(color: correctPassword ? Colors.blueGrey : Colors.red),
-                          prefixIcon: Icon(Icons.lock_outlined,  color: correctPassword ? Colors.blue : Colors.red,),
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              passwordToggle ? Icons.visibility_off_outlined : Icons.visibility_outlined,
-                              color: correctPassword ? Colors.blue : Colors.red,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                passwordToggle = !passwordToggle;
-                              });
-                            },
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.0),
-                              borderSide: BorderSide(
-                                  width: 1,
-                                  color: correctPassword ? Colors.blue : Colors.red
-                              )
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                              borderSide: BorderSide(
-                                  width: 2,
-                                  color: correctPassword ? Colors.blue : Colors.red
-                              )
-                          )
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: 
-                      Row(
+                ),
+                const Padding(
+                    padding: EdgeInsets.only(top: 80)
+                ),
+                Column(
+                  children: [
+                    TextField(
+                      controller: usernameController,
+                      keyboardType: TextInputType.name,
+                      textCapitalization: TextCapitalization.sentences,
+                      style: TextStyle(
+                        color: correctUsername ? Colors.blue : Colors.red
+                      ),
+                      decoration: InputDecoration(
+                        hintText: 'Email',
+                        hintStyle: TextStyle(color: correctUsername ? Colors.blueGrey : Colors.red),
+                        prefixIcon: Icon(Icons.email_outlined, color: correctUsername ? Colors.blue : Colors.red),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          borderSide: BorderSide(
+                            width: 1,
+                            color: correctUsername ? Colors.blue : Colors.red
+                          )
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide(
+                            width: 2,
+                            color: correctUsername ? Colors.blue : Colors.red
+                          )
+                        )
+                      )
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Row(
                         children: [
                           Visibility(
-                              visible: !correctPassword,
-                              child: const Icon(Icons.error_outline, color: Colors.red,)
+                            visible: !correctUsername,
+                            child: const Icon(Icons.error_outline, color: Colors.red,),
                           ),
                           Visibility(
-                            visible: !correctPassword,
-                            child: const Text('The password lengths must be greater than 8 characters', style: TextStyle(color: Colors.red),),
+                            visible: !correctUsername,
+                            child: const Text('The email must be valid', style: TextStyle(color: Colors.red),),
                           )
                         ],
-                    ),
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 80),
-                        child:
-                        Hero(
-                          tag: 'loginButton',
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                              padding: MaterialStateProperty.all(
-                                const EdgeInsets.symmetric(horizontal: 120, vertical: 8)
+                      ),
+                    )
+                  ],
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                        child: TextField(
+                          controller: passwordController,
+                          keyboardType: TextInputType.text,
+                          textCapitalization: TextCapitalization.sentences,
+                          obscureText: !passwordToggle,
+                          style: TextStyle(
+                              color: correctPassword ? Colors.blue : Colors.red
+                          ),
+                          decoration: InputDecoration(
+                            hintText: 'Password',
+                            hintStyle: TextStyle(color: correctPassword ? Colors.blueGrey : Colors.red),
+                            prefixIcon: Icon(Icons.lock_outlined,  color: correctPassword ? Colors.blue : Colors.red,),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                passwordToggle ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                                color: correctPassword ? Colors.blue : Colors.red,
                               ),
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18.0),
-                                  side: const BorderSide(color: Colors.blue)
-                                )
-                              )
+                              onPressed: () {
+                                setState(() {
+                                  passwordToggle = !passwordToggle;
+                                });
+                              },
                             ),
-                            onPressed: () {
-                              setState(() {
-                                if (checkInputs()) {
-                                  welcomeUser();
-                                  usernameController.clear();
-                                  passwordController.clear();
-                                }
-                              });
-                            },
-                            child: const Text('Login', style: TextStyle(fontSize: 20.0),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                                borderSide: BorderSide(
+                                    width: 1,
+                                    color: correctPassword ? Colors.blue : Colors.red
+                                )
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                                borderSide: BorderSide(
+                                    width: 2,
+                                    color: correctPassword ? Colors.blue : Colors.red
+                                )
+                            )
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child:
+                        Row(
+                          children: [
+                            Visibility(
+                                visible: !correctPassword,
+                                child: const Icon(Icons.error_outline, color: Colors.red,)
+                            ),
+                            Visibility(
+                              visible: !correctPassword,
+                              child: const Text('The password lengths must be greater than 8 characters', style: TextStyle(color: Colors.red),),
+                            )
+                          ],
+                      ),
+                    )
+                  ],
+                ),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 80),
+                          child:
+                          Hero(
+                            tag: 'loginButton',
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                padding: MaterialStateProperty.all(
+                                  const EdgeInsets.symmetric(horizontal: 120, vertical: 8)
+                                ),
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side: const BorderSide(color: Colors.blue)
+                                  )
+                                )
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  if (checkInputs()) {
+                                    welcomeUser();
+                                    usernameController.clear();
+                                    passwordController.clear();
+                                  }
+                                });
+                              },
+                              child: const Text('Login', style: TextStyle(fontSize: 20.0),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      const Padding(padding: EdgeInsets.only(top: 80.0)),
-                      Visibility(
-                        visible: pressed,
-                        child:
-                          Text('Welcome $username'),
-                      ),
-                      Visibility(
-                        visible: pressed,
-                        child:
-                          Text('Password: $password'),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ],
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        const Padding(padding: EdgeInsets.only(top: 80.0)),
+                        Visibility(
+                          visible: pressed,
+                          child:
+                            Text('Welcome $username'),
+                        ),
+                        Visibility(
+                          visible: pressed,
+                          child:
+                            Text('Password: $password'),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
